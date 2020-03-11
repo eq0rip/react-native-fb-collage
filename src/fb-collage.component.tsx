@@ -38,7 +38,7 @@ export default class FBCollage extends React.Component<Props> {
       >
         <ImageBackground
           style={this.styles.FLEX as ViewStyle}
-          source={{uri:videoIndicator || (source.uri}}
+          source={{uri:videoIndicator || source.uri}}
           resizeMode={resizeMode}
           blurRadius={blurRadius}
         >
