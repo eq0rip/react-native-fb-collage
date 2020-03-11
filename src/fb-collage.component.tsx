@@ -20,7 +20,7 @@ export default class FBCollage extends React.Component<Props> {
       resizeMode,
       textStyle: textStyleOverride,
       overlayStyle: overlayStyleOverride,
-      videoIndicator: '',
+      videoIndicator,
     } = this.props;
 
     const source:any = typeof image === 'string' ? { uri: image } : image;
