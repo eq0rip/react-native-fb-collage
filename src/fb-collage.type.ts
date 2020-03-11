@@ -33,6 +33,7 @@ export class Props {
   overlayStyle?: ViewStyle;
 
   textStyle?: TextStyle;
+  videoIndicator?: any;
 
   imageOnPress?: { (index: number, images: any[]): void };
 }
