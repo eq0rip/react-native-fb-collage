@@ -19,11 +19,50 @@ export default class FBCollage extends React.Component<Props> {
       imageOnPress,
       resizeMode,
       textStyle: textStyleOverride,
-      overlayStyle: overlayStyleOverride
+      overlayStyle: overlayStyleOverride,
+      videoIndicator: '',
     } = this.props;
 
-    const source = typeof image === 'string' ? { uri: image } : image;
-
+    const source:any = typeof image === 'string' ? { uri: image } : image;
+    // Quick hacky fix for prototyping
+    if(source.uri.includes('.mp4')) {
+      return (
+      <TouchableOpacity
+        style={{
+          ...(this.styles.BUTTON as ViewStyle),
+          ...style
+        }}
+        onPress={() => imageOnPress && imageOnPress(index, images)}
+        activeOpacity={0.8}
+        key={`image${index}`}
+      >
+        <ImageBackground
+          style={this.styles.FLEX as ViewStyle}
+          source={{uri:videoIndicator || (source.uri}}
+          resizeMode={resizeMode}
+          blurRadius={blurRadius}
+        >
+          {text && (
+            <View
+              style={{
+                ...(this.styles.OVERLAY as ViewStyle),
+                ...overlayStyleOverride
+              }}
+            >
+              <Text
+                style={{
+                  ...(this.styles.TEXT as TextStyle),
+                  ...textStyleOverride
+                }}
+              >
+                {'+' + text}
+              </Text>
+            </View>
+          )}
+        </ImageBackground>
+      </TouchableOpacity>
+    ); 
+    }
     return (
       <TouchableOpacity
         style={{
